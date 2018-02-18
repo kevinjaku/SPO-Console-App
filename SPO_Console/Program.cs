@@ -15,8 +15,8 @@ namespace SPO_Console
 
             #region Authentication
 
-            string username = "kevinku@microsoft.com";
-            string password = "Nexus2013";
+            string username = "<<username>>";
+            string password = "<<Password>>";
 
             SecureString securepassword = new SecureString();
             foreach (char c in password.ToCharArray())
@@ -43,8 +43,8 @@ namespace SPO_Console
             */
             #endregion
 
-            string siteurl  = "https://microsoft-my.sharepoint.com/personal/kevinku_microsoft_com/subsite";
-            string xlsfile  = @"C:\Users\Kevin\Desktop\SRWellnessApril 26.xls";
+            string siteurl  = "<<SPO Url>>";
+            string xlsfile  = @"C:\Desktop\<<Excel file name>>.xls";
             string listname = "Cust List";
 
 
@@ -152,7 +152,7 @@ namespace SPO_Console
                         {
                             existing["Age"] = xlRange.Cells[i, 2].Value2.ToString();
                             existing["Total_x0020_SR_x0020_Labor_x0020"] = xlRange.Cells[i, 3].Value2.ToString();
-                            existing["SR_x0020_Owner"] = oweb.EnsureUser(xlRange.Cells[i, 4].Value2.ToString() + "@microsoft.com");
+                            existing["SR_x0020_Owner"] = oweb.EnsureUser(xlRange.Cells[i, 4].Value2.ToString() + "@<<email-domain>>");
                             existing["Support_x0020_Topic"] = xlRange.Cells[i, 5].Value2.ToString();
 
                             ClientResult<PrincipalInfo> persons = Utility.ResolvePrincipal(context, oweb, ((Microsoft.SharePoint.Client.FieldLookupValue)(existing["SME_x0020_Reviewer"])).LookupValue, PrincipalType.User, PrincipalSource.All, null, false);
@@ -165,7 +165,7 @@ namespace SPO_Console
 
 
                             if (xlRange.Cells[i, 6].Value2 != null)
-                                existing["SME_x0020_Reviewer"] = oweb.EnsureUser(xlRange.Cells[i, 6].Value2.ToString() + "@microsoft.com");
+                                existing["SME_x0020_Reviewer"] = oweb.EnsureUser(xlRange.Cells[i, 6].Value2.ToString() + "@<<email-domain>>");
                             if (xlRange.Cells[i, 7].Value2 != null)
                                 existing["Comments"] = xlRange.Cells[i, 7].Value2.ToString();
                             if (xlRange.Cells[i, 8].Value2 != null)
